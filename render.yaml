@@ -4,14 +4,18 @@ services:
     env: python
     buildCommand: |
       apt-get update && apt-get install -y $(cat apt.txt)
+      export CFLAGS="-I/usr/include/portaudio2 -I/usr/include/python3.11"
+      export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
+      export PKG_CONFIG_PATH="/usr/lib/x86_64-linux-gnu/pkgconfig"
       python -m pip install --upgrade pip
+      pip install wheel setuptools
       pip install -r requirements.txt
     startCommand: streamlit run app.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: CFLAGS
-        value: "-I/usr/include/portaudio2"
+        value: "-I/usr/include/portaudio2 -I/usr/include/python3.11"
       - key: LDFLAGS
         value: "-L/usr/lib/x86_64-linux-gnu"
       - key: PKG_CONFIG_PATH

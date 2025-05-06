@@ -11,4 +11,8 @@ libasound2-dev
 libjack-jackd2-dev
 gfortran
 libopenblas-dev
-liblapack-dev 
+liblapack-dev
+portaudio19-dev
+libportaudio-dev
+libportaudiocpp0
+python3-pyaudio 
