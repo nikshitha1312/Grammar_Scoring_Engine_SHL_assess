@@ -65,6 +65,21 @@ http://localhost:8501
 
 ## Deployment
 
+### Deploying to Render
+
+1. Create a Render account at [render.com](https://render.com)
+2. Connect your GitHub repository to Render
+3. Click "New +" and select "Web Service"
+4. Select your repository
+5. Configure the service:
+   - Name: grammar-scoring-engine
+   - Environment: Python
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `streamlit run app.py`
+6. Click "Create Web Service"
+
+The application will be automatically deployed and you'll get a URL to access it.
+
 ### Deploying to Streamlit Cloud
 
 1. Push your code to GitHub
