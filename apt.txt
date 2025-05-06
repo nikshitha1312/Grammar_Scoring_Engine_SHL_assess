@@ -8,4 +8,7 @@ python3-dev
 libportaudio-dev
 pkg-config
 libasound2-dev
-libjack-jackd2-dev 
+libjack-jackd2-dev
+gfortran
+libopenblas-dev
+liblapack-dev 

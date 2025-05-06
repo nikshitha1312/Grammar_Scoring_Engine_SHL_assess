@@ -3,30 +3,24 @@ services:
     name: grammar-scoring-engine
     env: python
     buildCommand: |
-      apt-get update
-      apt-get install -y build-essential python3-dev pkg-config
-      apt-get install -y $(cat apt.txt)
-      pip install --upgrade pip
-      pip install wheel setuptools
-      rm -rf .venv
-      export CFLAGS="-I/usr/include/portaudio2"
-      export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
-      pip install --no-cache-dir -r requirements.txt
-    startCommand: |
-      export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-      export CFLAGS="-I/usr/include/portaudio2"
-      export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
-      streamlit run app.py
+      apt-get update && apt-get install -y $(cat apt.txt)
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: streamlit run app.py
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.5
-      - key: PORT
-        value: 8501
-      - key: LD_LIBRARY_PATH
-        value: /usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu
+        value: 3.11.0
       - key: CFLAGS
         value: "-I/usr/include/portaudio2"
       - key: LDFLAGS
         value: "-L/usr/lib/x86_64-linux-gnu"
+      - key: PKG_CONFIG_PATH
+        value: "/usr/lib/x86_64-linux-gnu/pkgconfig"
+      - key: OPENBLAS
+        value: "/usr/lib/x86_64-linux-gnu"
+      - key: LAPACK
+        value: "/usr/lib/x86_64-linux-gnu"
+      - key: ATLAS
+        value: "/usr/lib/x86_64-linux-gnu"
     healthCheckPath: /
     autoDeploy: true 
