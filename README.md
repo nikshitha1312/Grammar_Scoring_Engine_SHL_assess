@@ -2,6 +2,8 @@
 
 A Python-based application that analyzes speech and provides grammar scoring feedback using machine learning.
 
+Dataset Link:https://www.kaggle.com/datasets/harshsaini105/shl-data
+
 ## Features
 
 - Audio recording and file upload support
@@ -81,6 +83,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Streamlit for the web interface
 - PyAudio for audio processing
 - LanguageTool for grammar checking 
+  
 
 ![image](https://github.com/user-attachments/assets/840d1979-cdc0-4180-b352-0d3cd3425e68)
 
