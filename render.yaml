@@ -3,13 +3,19 @@ services:
     name: grammar-scoring-engine
     env: python
     buildCommand: |
-      apt-get update && apt-get install -y $(cat apt.txt)
+      apt-get update
+      apt-get install -y $(cat apt.txt)
+      pip install --upgrade pip
       pip install -r requirements.txt
-    startCommand: streamlit run app.py
+    startCommand: |
+      export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+      streamlit run app.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.5
       - key: PORT
         value: 8501
+      - key: LD_LIBRARY_PATH
+        value: /usr/local/lib
     healthCheckPath: /
     autoDeploy: true 
