@@ -2,7 +2,9 @@ services:
   - type: web
     name: grammar-scoring-engine
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      apt-get update && apt-get install -y $(cat apt.txt)
+      pip install -r requirements.txt
     startCommand: streamlit run app.py
     envVars:
       - key: PYTHON_VERSION
