@@ -3,5 +3,7 @@ sounddevice==0.4.6
 numpy==1.26.4
 scipy==1.12.0
 wave==0.0.2
---find-links https://www.lfd.uci.edu/~gohlke/pythonlibs/pyaudio/
+setuptools>=65.5.1
+wheel>=0.38.0
+--no-binary :all:
 PyAudio==0.2.14 

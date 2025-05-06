@@ -4,13 +4,18 @@ services:
     env: python
     buildCommand: |
       apt-get update
-      apt-get install -y build-essential python3-dev
+      apt-get install -y build-essential python3-dev pkg-config
       apt-get install -y $(cat apt.txt)
       pip install --upgrade pip
-      pip install wheel
-      CFLAGS="-I/usr/include/portaudio2" pip install -r requirements.txt
+      pip install wheel setuptools
+      rm -rf .venv
+      export CFLAGS="-I/usr/include/portaudio2"
+      export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
+      pip install --no-cache-dir -r requirements.txt
     startCommand: |
-      export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:$LD_LIBRARY_PATH
+      export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+      export CFLAGS="-I/usr/include/portaudio2"
+      export LDFLAGS="-L/usr/lib/x86_64-linux-gnu"
       streamlit run app.py
     envVars:
       - key: PYTHON_VERSION
@@ -18,8 +23,10 @@ services:
       - key: PORT
         value: 8501
       - key: LD_LIBRARY_PATH
-        value: /usr/local/lib:/usr/lib
+        value: /usr/local/lib:/usr/lib:/usr/lib/x86_64-linux-gnu
       - key: CFLAGS
         value: "-I/usr/include/portaudio2"
+      - key: LDFLAGS
+        value: "-L/usr/lib/x86_64-linux-gnu"
     healthCheckPath: /
     autoDeploy: true 

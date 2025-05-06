@@ -5,4 +5,7 @@ libportaudiocpp0
 python3-pyaudio
 build-essential
 python3-dev
-portaudio19-dev 
+libportaudio-dev
+pkg-config
+libasound2-dev
+libjack-jackd2-dev 
