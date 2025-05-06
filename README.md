@@ -81,3 +81,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Streamlit for the web interface
 - PyAudio for audio processing
 - LanguageTool for grammar checking 
+
+![image](https://github.com/user-attachments/assets/840d1979-cdc0-4180-b352-0d3cd3425e68)
+
+![image](https://github.com/user-attachments/assets/6735ec7c-f849-4697-be73-3d9477e8f6b7)
