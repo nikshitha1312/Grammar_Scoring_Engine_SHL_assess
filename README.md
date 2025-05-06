@@ -1,33 +1,38 @@
 # Grammar Scoring Engine
 
-A web application that evaluates grammar in spoken English using machine learning. The application provides real-time audio recording capabilities and gives feedback on grammar usage.
+A Python-based application that analyzes speech and provides grammar scoring feedback using machine learning.
 
 ## Features
 
-- Real-time audio recording
-- Audio file upload support
-- Grammar scoring with feedback
+- Audio recording and file upload support
+- Speech-to-text conversion
+- Grammar analysis and scoring
+- Real-time feedback
 - User-friendly interface
-- Responsive design
 
 ## Prerequisites
 
-- Python 3.8 or higher
-- pip (Python package installer)
-- A working microphone (for recording functionality)
+- Python 3.11 or higher
+- PortAudio (for audio recording)
+- Git
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/grammar-scoring-engine.git
-cd grammar-scoring-engine
+git clone https://github.com/nikshitha1312/Grammar_Scoring_Engine_SHL_assess.git
+cd Grammar_Scoring_Engine_SHL_assess
 ```
 
-2. Create a virtual environment (recommended):
+2. Create and activate a virtual environment:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
+
+# Linux/Mac
+python -m venv .venv
+source .venv/bin/activate
 ```
 
 3. Install dependencies:
@@ -35,9 +40,9 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Running the Application
+## Usage
 
-1. Start the Streamlit server:
+1. Start the application:
 ```bash
 streamlit run app.py
 ```
@@ -47,76 +52,17 @@ streamlit run app.py
 http://localhost:8501
 ```
 
-## Usage
+3. Use the interface to:
+   - Record audio directly
+   - Upload audio files
+   - View grammar scores
+   - Get feedback
 
-1. **Recording Audio**:
-   - Adjust the recording duration using the slider
-   - Click "Start Recording" to begin
-   - Wait for the recording to complete
+## Project Structure
 
-2. **Uploading Audio**:
-   - Click "Browse files" to upload a WAV or MP3 file
-   - Wait for the upload to complete
-
-3. **Processing**:
-   - Click "Process Audio" to analyze the grammar
-   - Wait for the results
-   - View your score and feedback
-
-## Deployment
-
-### Deploying to Render
-
-1. Create a Render account at [render.com](https://render.com)
-2. Connect your GitHub repository to Render
-3. Click "New +" and select "Web Service"
-4. Select your repository
-5. Configure the service:
-   - Name: grammar-scoring-engine
-   - Environment: Python
-   - Build Command: `pip install -r requirements.txt`
-   - Start Command: `streamlit run app.py`
-6. Click "Create Web Service"
-
-The application will be automatically deployed and you'll get a URL to access it.
-
-### Deploying to Streamlit Cloud
-
-1. Push your code to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Sign in with your GitHub account
-4. Click "New app"
-5. Select your repository and branch
-6. Set the main file path to `app.py`
-7. Click "Deploy"
-
-### Deploying to Heroku
-
-1. Create a `Procfile`:
-```
-web: sh setup.sh && streamlit run app.py
-```
-
-2. Create a `setup.sh`:
-```bash
-mkdir -p ~/.streamlit/
-echo "\
-[general]\n\
-email = \"\"\n\
-" > ~/.streamlit/credentials.toml
-echo "\
-[server]\n\
-headless = true\n\
-enableCORS=false\n\
-port = $PORT\n\
-" > ~/.streamlit/config.toml
-```
-
-3. Deploy to Heroku:
-```bash
-heroku create your-app-name
-git push heroku main
-```
+- `app.py`: Main application file
+- `requirements.txt`: Python dependencies
+- `grammer (1).ipynb`: Jupyter notebook with model training code
 
 ## Contributing
 
@@ -132,6 +78,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Streamlit for the web framework
-- SoundDevice for audio recording capabilities
-- All contributors and users of the application 
+- Streamlit for the web interface
+- PyAudio for audio processing
+- LanguageTool for grammar checking 
